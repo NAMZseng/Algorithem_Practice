@@ -1,4 +1,4 @@
-package lesson1_stings;
+package lesson1_strings;
 
 /**
  * @author Nam Zeng
