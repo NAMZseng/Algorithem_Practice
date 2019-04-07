@@ -16,7 +16,7 @@ public class SwapSort {
      * 3.针对所有的元素重复以上的步骤，除了最后一个。
      * 4.持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
      */
-    public void bubbleSort(int[] arr) {
+    public  static void bubbleSort(int[] arr) {
 
         // 设置完成标志，当一次比较后若没有进行交换，则说明数组以有序，直接退出循环
         boolean done = false;
@@ -46,7 +46,7 @@ public class SwapSort {
      *   在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
      * 3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
      */
-    public void quickSort(int[] arr){
+    public static void quickSort(int[] arr){
 
     }
 

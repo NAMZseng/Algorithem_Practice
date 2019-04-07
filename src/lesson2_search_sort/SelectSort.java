@@ -14,7 +14,7 @@ public class SelectSort {
      * 2.再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
      * 3.重复第二步，直到所有元素均排序完毕。
      */
-    public void selectSort(int[] arr) {
+    public static void selectSort(int[] arr) {
         // 进行n-1次循环比较
         for (int i = 0; i < arr.length - 1; i++) {
             int min = i;
@@ -39,7 +39,7 @@ public class SelectSort {
      * 3.把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置;
      * 4.重复步骤 2，直到堆的尺寸为 1
      */
-    public void heapSort(int[] arr){
+    public static void heapSort(int[] arr){
 
 
     }

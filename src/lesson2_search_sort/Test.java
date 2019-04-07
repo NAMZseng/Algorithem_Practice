@@ -1,7 +1,5 @@
 package lesson2_search_sort;
 
-import java.util.Arrays;
-
 /**
  * @author Nam Zeng
  * @coding UTF-8
@@ -11,5 +9,13 @@ import java.util.Arrays;
  */
 public class Test {
 
+    public static void main(String[] args) {
+        int[] arr = new int[]{0, 9, 7, 6, 4, 3, 2, 1};
 
+        InsertSort.binaryInsertSort(arr);
+
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
 }
