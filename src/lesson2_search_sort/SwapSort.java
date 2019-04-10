@@ -8,8 +8,11 @@ package lesson2_search_sort;
  */
 public class SwapSort {
 
-    // 根据数据量，决定调用插入还是快排的枢纽元
-    private static final int CUTOFF = 10;
+    /**
+     * If the length of an array to be sorted is less than this
+     * constant, insertion sort is used in preference to Quicksort.
+     */
+    private static final int INSERTION_SORT_THRESHOLD = 47;
 
     /**
      * 冒泡排序
@@ -79,7 +82,7 @@ public class SwapSort {
 
     public static void quickSort(int[] arr, int left, int right) {
         // 当需要排列的元素较小时,直接使用插入排序
-        if (left + CUTOFF > right) {
+        if (right - left < INSERTION_SORT_THRESHOLD) {
             InsertSort.insertSort(arr, left, right);
         } else {
             int pivot = getPivot(arr, left, right);
