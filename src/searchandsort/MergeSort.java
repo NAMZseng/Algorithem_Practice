@@ -1,4 +1,4 @@
-package lesson2_search_sort;
+package searchandsort;
 
 /**
  * @author Nam Zeng
@@ -17,4 +17,5 @@ public class MergeSort {
      * 5.将另一序列剩下的所有元素直接复制到合并序列尾。
      */
 
+    // TODO
 }

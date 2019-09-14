@@ -1,4 +1,4 @@
-package lesson2_search_sort;
+package searchandsort;
 
 /**
  * @author Nam Zeng
@@ -40,7 +40,6 @@ public class SelectSort {
      * 4.重复步骤 2，直到堆的尺寸为 1
      */
     public static void heapSort(int[] arr){
-
-
+        // TODO
     }
 }

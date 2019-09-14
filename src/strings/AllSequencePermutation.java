@@ -1,4 +1,4 @@
-package lesson1_strings;
+package strings;
 
 /**
  * @author Nam Zeng
@@ -7,7 +7,14 @@ package lesson1_strings;
  * @Description 全排列
  */
 public class AllSequencePermutation {
-    //  @description: 判断str[from,to)中是有和str[to]重复的项
+    /**
+     * 判断str[from,to)中是有和str[to]重复的项
+     *
+     * @param str
+     * @param from
+     * @param to
+     * @return
+     */
     public boolean hasSame(char[] str, int from ,int to){
         for (int i = from; i < to; i++) {
             if(str[i] == str[to]){
@@ -18,8 +25,12 @@ public class AllSequencePermutation {
     }
 
 
-    // @description: 使用递归对str从第pos位开始进行全排列
-    // @params: [str, pos] 表示确定全排列的第pos位
+    /**
+     * 使用递归对str从第pos位开始进行全排列
+     *
+     * @param str
+     * @param pos 表示确定全排列的第pos位
+     */
     public void allSequencePermutate(char[] str, int pos) {
         if (pos == str.length) {
             // 全排列完成，可在此if语句体中调用完成全排列时进行的动作

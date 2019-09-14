@@ -1,4 +1,4 @@
-package lesson2_search_sort;
+package searchandsort;
 
 /**
  * @author Nam Zeng
@@ -50,15 +50,30 @@ public class SwapSort {
      * 1.使用三数中值分割法从数列中挑出一个“枢纽元”（pivot）元素
      * 2.创建游标i,j 分别从左和右端扫描数组，将小于pivot移动其左边，大于的移到其右边
      * 3.对pivot的左右两部分分别调用递归，重复1，2操作
+     *
      */
-    // 交换arr[i], arr[j]
+
+    /**
+     * 交换arr[i], arr[j]
+     *
+     * @param arr
+     * @param i
+     * @param j
+     */
     public static final void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    // 获取每次排序的枢纽元pivot
+    /**
+     * 获取每次排序的枢纽元pivot
+     *
+     * @param arr
+     * @param left
+     * @param right
+     * @return
+     */
     public static final int getPivot(int[] arr, int left, int right) {
         int center = left + (right - left) / 2;
 
@@ -89,7 +104,7 @@ public class SwapSort {
             int i = left;
             int j = right - 1;
             while (true) {
-                // 经过getPivot()后，left已经是小于pivot的，且right-1
+                // 经过getPivot()后，left已经是小于pivot的，right-1=pivot
                 // 若i--,j++时，在arr[i]=arr[j]=pivot时会出现死循环
                 // 在等于时也停止，已尽量获取俩个较为平衡的分割
                 // （可假设数组元素全相等时, < 与 <= 区别）
@@ -103,7 +118,7 @@ public class SwapSort {
                     break;
                 }
             }
-            // 此时i所在的元素大于等于pivot,置换right-1位置的pivot
+            // 此时i/j所在的元素大于等于pivot,置换right-1位置的pivot
             swap(arr, i, right - 1);
 
             quickSort(arr, left, i - 1);

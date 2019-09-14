@@ -1,4 +1,4 @@
-package lesson1_strings;
+package strings;
 
 /**
  * @author Nam Zeng
@@ -8,7 +8,13 @@ package lesson1_strings;
  */
 public class LeftRotation {
 
-     // @description: 将str中下标从[from, to]的子串反转
+    /**
+     * 将str中下标从[from, to]的子串反转
+     *
+     * @param str
+     * @param from
+     * @param to
+     */
     public void reverseString(char[] str, int from, int to) {
         while (from < to) {
             char temp = str[from];
@@ -16,7 +22,13 @@ public class LeftRotation {
             str[to--] = temp;
         }
     }
-    // @description: 将str左移K位
+
+    /**
+     * 将str左移K位
+     *
+     * @param str
+     * @param k
+     */
     public void leftRotateString(char[] str, int k) {
 
         k %= str.length;

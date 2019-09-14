@@ -1,4 +1,4 @@
-package lesson1_strings;
+package strings;
 
 /**
  * @author Nam Zeng
@@ -7,6 +7,5 @@ package lesson1_strings;
  * @Description  快速字符串匹配
  */
 public class KMP {
-
-
+    // TODO
 }

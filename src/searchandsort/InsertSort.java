@@ -1,4 +1,4 @@
-package lesson2_search_sort;
+package searchandsort;
 
 /**
  * @author Nam Zeng
@@ -35,7 +35,10 @@ public class InsertSort {
 
     }
 
-    //  优化：在查找时使用折半查找
+    /**
+     * 优化：在查找时使用折半查找
+     * @param arr
+     */
     public static void binaryInsertSort(int[] arr){
         for (int i = 1; i < arr.length; i++) {
 

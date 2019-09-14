@@ -1,4 +1,4 @@
-package lesson2_search_sort;
+package searchandsort;
 
 /**
  * @author Nam Zeng
