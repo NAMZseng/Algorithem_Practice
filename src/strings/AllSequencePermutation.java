@@ -7,23 +7,6 @@ package strings;
  * @Description 全排列
  */
 public class AllSequencePermutation {
-    /**
-     * 判断str[from,to)中是有和str[to]重复的项
-     *
-     * @param str
-     * @param from
-     * @param to
-     * @return
-     */
-    public boolean hasSame(char[] str, int from ,int to){
-        for (int i = from; i < to; i++) {
-            if(str[i] == str[to]){
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     /**
      * 使用递归对str从第pos位开始进行全排列
@@ -50,25 +33,43 @@ public class AllSequencePermutation {
             }
 
 //            // 剪枝法二：空间换时间，时间复杂度O(n!), 空间复杂度O(n)
-//            boolean[] mark = new boolean[256];
-//            if (mark[i] == true){
+//            // 对于128个ascii码，当某个字符已经出现过，直接跳过
+//            boolean[] mark = new boolean[128];
+//            if (mark[(int)str[i]] == true){
 //                continue;
 //            }
-//            mark[i] = true;
+//            mark[(int)str[i]] = true;
 
-            // 将第i位和第k位交换
+            // 将第i位和第pos位交换，即让字符串中的各个元素分别充当首元素（pos位）
             char temp = str[i];
             str[i] = str[pos];
             str[pos] = temp;
 
-            // 移交下一层去确认k+1位
+            // 递归，从第pos+1位开始，确定pos位后面的排列
             allSequencePermutate(str, pos + 1);
 
-            // 回溯（换回来）防止影响下一次的交换
+            // 回溯，交换回初始的首元素，防止影响下一次的交换
             temp = str[i];
             str[i] = str[pos];
             str[pos] = temp;
         }
+    }
+
+    /**
+     * 判断str[from,to)中是有和str[to]重复的项
+     *
+     * @param str
+     * @param from
+     * @param to
+     * @return
+     */
+    public boolean hasSame(char[] str, int from ,int to){
+        for (int i = from; i < to; i++) {
+            if(str[i] == str[to]){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

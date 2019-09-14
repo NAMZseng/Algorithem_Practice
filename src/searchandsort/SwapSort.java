@@ -51,19 +51,47 @@ public class SwapSort {
      * 2.创建游标i,j 分别从左和右端扫描数组，将小于pivot移动其左边，大于的移到其右边
      * 3.对pivot的左右两部分分别调用递归，重复1，2操作
      *
-     */
-
-    /**
-     * 交换arr[i], arr[j]
-     *
      * @param arr
-     * @param i
-     * @param j
+     * @param left
+     * @param right
      */
-    public static final void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    public static void quickSort(int[] arr, int left, int right) {
+        // 当需要排列的元素较小时,直接使用插入排序
+        if (right - left < INSERTION_SORT_THRESHOLD) {
+            InsertSort.insertSort(arr, left, right);
+        } else {
+            int pivot = getPivot(arr, left, right);
+            int i = left;
+            int j = right - 1;
+            while (true) {
+                // 经过getPivot()后，left已经是小于pivot的，right-1=pivot
+                // 若i--,j++时，在arr[i]=arr[j]=pivot时会出现死循环
+                // 在等于时也停止，已尽量获取俩个较为平衡的分割
+                // （可假设数组元素全相等时, < 与 <= 区别）
+                while (arr[++i] < pivot) { }
+                while (arr[--j] > pivot) { }
+                if (i < j) {
+                    swap(arr, i, j);
+                } else {
+                    // 此时i所在位置的元素一定是>=pivot的
+                    break;
+                }
+            }
+            // 此时i所在的元素大于等于pivot,置换right-1位置的pivot
+            swap(arr, i, right - 1);
+
+            quickSort(arr, left, i - 1);
+            quickSort(arr, i + 1, right);
+
+//                   //对于找出数组第k小元素的quickSelect(int[]arr, int left, int right, int k)
+//                   //当完成排序后，数组的第k-1个元素即为第k小元素
+//                    if(k <= i){
+//                        quickSelect(arr, left, i-1, k);
+//                    } else if (k > i + 1){
+//                        // 当k = i+1, 则i所在元素即为第k小元，直接结束函数即可
+//                        quickSelect(arr, i+1, right, k);
+//                    }
+        }
     }
 
     /**
@@ -95,44 +123,17 @@ public class SwapSort {
         return arr[right - 1];
     }
 
-    public static void quickSort(int[] arr, int left, int right) {
-        // 当需要排列的元素较小时,直接使用插入排序
-        if (right - left < INSERTION_SORT_THRESHOLD) {
-            InsertSort.insertSort(arr, left, right);
-        } else {
-            int pivot = getPivot(arr, left, right);
-            int i = left;
-            int j = right - 1;
-            while (true) {
-                // 经过getPivot()后，left已经是小于pivot的，right-1=pivot
-                // 若i--,j++时，在arr[i]=arr[j]=pivot时会出现死循环
-                // 在等于时也停止，已尽量获取俩个较为平衡的分割
-                // （可假设数组元素全相等时, < 与 <= 区别）
-                while (arr[++i] < pivot) {
-                }
-                while (arr[--j] > pivot) {
-                }
-                if (i < j) {
-                    swap(arr, i, j);
-                } else {
-                    break;
-                }
-            }
-            // 此时i/j所在的元素大于等于pivot,置换right-1位置的pivot
-            swap(arr, i, right - 1);
-
-            quickSort(arr, left, i - 1);
-            quickSort(arr, i + 1, right);
-
-//                   //对于找出数组第k小元素的quickSelect(int[]arr, int left, int right, int k)
-//                   //当完成排序后，数组的第k-1个元素即为第k小元素
-//                    if(k <= i){
-//                        quickSelect(arr, left, i-1, k);
-//                    } else if (k > i + 1){
-//                        // 当k = i+1, 则i所在元素即为第k小元，直接结束函数即可
-//                        quickSelect(arr, i+1, right, k);
-//                    }
-        }
+    /**
+     * 交换arr[i], arr[j]
+     *
+     * @param arr
+     * @param i
+     * @param j
+     */
+    public static final void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
 }

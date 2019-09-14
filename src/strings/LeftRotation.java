@@ -9,6 +9,25 @@ package strings;
 public class LeftRotation {
 
     /**
+     * 将str左移K位
+     *
+     * @param str
+     * @param k
+     */
+    public void leftRotateString(char[] str, int k) {
+        k %= str.length;
+
+        // (X'Y')' = YX
+        // X = ab, x' = ba
+        // Y = xyz, Y'= zyx
+        // XY = abxyz
+        // (X'Y')' = YX =xyzab
+        reverseString(str, 0, k - 1);
+        reverseString(str, k, str.length - 1);
+        reverseString(str, 0, str.length - 1);
+    }
+
+    /**
      * 将str中下标从[from, to]的子串反转
      *
      * @param str
@@ -22,24 +41,4 @@ public class LeftRotation {
             str[to--] = temp;
         }
     }
-
-    /**
-     * 将str左移K位
-     *
-     * @param str
-     * @param k
-     */
-    public void leftRotateString(char[] str, int k) {
-
-        k %= str.length;
-        // (X'Y')' = YX
-        // X = ab, x' = ba
-        // Y = xyz, Y'= zyx
-        // XY = abxyz
-        // (X'Y')' = YX =xyzab
-        reverseString(str, 0, k - 1);
-        reverseString(str, k, str.length - 1);
-        reverseString(str, 0, str.length - 1);
-    }
-
 }

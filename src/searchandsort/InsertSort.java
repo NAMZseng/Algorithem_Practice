@@ -32,7 +32,6 @@ public class InsertSort {
                 arr[j] = temp;
             }
         }
-
     }
 
     /**
@@ -56,7 +55,7 @@ public class InsertSort {
             }
 
             int temp = arr[i];
-            // 移动有序列表， 插入新元素
+            // 移动有序列表， 在mid位置前插入新元素
             for (int j = i-1 ; j >= mid; j--) {
                 arr[j+1] = arr[j];
             }
